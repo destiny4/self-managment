@@ -1,15 +1,17 @@
 <template>
     <div class="search">
         <div class="search-input">
-            <div class="item" v-for="item in searchFileds" :key="item.id">
-                <label :style="getStyle(item)">{{ item.name }}：</label>
-                <el-input
-                    size="small"
-                    class="input"
-                    v-model="searchInfo[item.id]"
-                    :placeholder="getPlaceHolder(item)"
-                />
-            </div>
+            <template v-for="item in searchFileds" :key="item.id">
+                <div v-if='item.inSearch' class="item">
+                    <label :style="getStyle(item)">{{ item.name }}：</label>
+                    <el-input
+                        size="small"
+                        class="input"
+                        v-model="searchInfo[item.id]"
+                        :placeholder="getPlaceHolder(item)"
+                    />
+                </div>
+            </template>
         </div>
         <div class="search-button">
             <div class="left">
@@ -29,6 +31,7 @@ import type { PropType } from "vue"
 interface searchFiledType {
     name: string
     id: string
+    inSearch?:boolean
     labelWidth?: string
     placeHolder?: string
     [propName: string]: any;
@@ -61,10 +64,10 @@ const handleEdit = () => { }
 const handleClear = () => { }
 
 const handleSearch = () => {
-    const obj:any={}
-    Object.keys(searchInfo).forEach(key=>{
-        if(searchInfo[key]){
-            obj[key]=searchInfo[key]
+    const obj: any = {}
+    Object.keys(searchInfo).forEach(key => {
+        if (searchInfo[key]) {
+            obj[key] = searchInfo[key]
         }
     })
     emit('search', obj)
@@ -83,7 +86,7 @@ const handleSearch = () => {
         flex-wrap: wrap;
         .item {
             display: flex;
-            margin-left:30px;
+            margin-left: 30px;
             margin-bottom: 12px;
             align-items: center;
             flex-basis: 350px;
