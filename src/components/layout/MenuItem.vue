@@ -1,6 +1,6 @@
 
 <template>
-    <component :is="itemComponent" :index="menu.path" :key="menu.path">
+    <component v-if='!menu.hiddenInMenu' :is="itemComponent" :index="menu.path" :key="menu.path">
         <i :class="menu.icon" v-if="menu.icon && !hasChildren"></i>
         <template #title v-if="!hasChildren">{{ menu.name }}</template>
         <template #title v-if="hasChildren">
@@ -12,7 +12,7 @@
     </component>
 </template>
 <script setup lang='ts'>
-import { defineProps, computed, ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { PropType } from "vue"
 
 const props = defineProps({

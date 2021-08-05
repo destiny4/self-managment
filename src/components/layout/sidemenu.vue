@@ -1,8 +1,8 @@
 
 <template>
     <div class="self-menu">
-        <el-menu class="menu-main" :collapse="collapse" router='true' :default-active='route.path'>
-            <MenuItem :menu='menu'/>
+        <el-menu class="menu-main" :collapse="collapse" :router='true' :default-active='route.path'>
+            <MenuItem :menu='item' v-for='item in menu'/>
         </el-menu>
         <div class="collapse-icon">
             <i @click="collapse = !collapse" class="el-icon-s-unfold" v-if="collapse"></i>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang='ts'>
-import { defineProps, computed, ref } from 'vue'
+import { computed, ref } from 'vue'
 import MenuItem from './MenuItem.vue'
 import type { PropType } from "vue"
 import { useRoute } from 'vue-router'
@@ -20,7 +20,7 @@ import { useRoute } from 'vue-router'
 const route=useRoute()
 defineProps({
     menu: {
-        type: Object as PropType<MenuItemType>,
+        type: Array as PropType<MenuItemType[]>,
         default: []
     },
     collapse: {

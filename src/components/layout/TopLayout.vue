@@ -3,7 +3,7 @@
   <div class="main-container">
     <Header class="header"></Header>
     <el-container class="self-absolute">
-      <Menu :menu="test" :collapse="false" />
+      <Menu :menu="routes" :collapse="false" />
       <el-container class="main-layout">
         <div class="nav-info">
           {{ name }}
@@ -20,7 +20,7 @@
 import useTitle from '@/hooks/useTitle'
 import Header from '@/components/layout/header.vue'
 import Menu from '@/components/layout/sidemenu.vue'
-import test from '@/router/test'
+import {routes} from '@/router'
 const name = useTitle()
 </script>
 
@@ -58,7 +58,6 @@ $header-height: 56px;
   height: $header-height;
   margin: 0 24px;
   background: #ffffff;
-  box-shadow: inset 0 -1px 0 0 #e6e6e6;
   font-family: PingFangSC-Medium;
   font-size: 20px;
   color: #000000;

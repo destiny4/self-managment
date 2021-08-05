@@ -89,7 +89,7 @@ import {
   ElNotification,
 } from 'element-plus';
 
-import router from './router'
+import {router} from './router'
 const components = [
   ElAlert,
   ElAside,

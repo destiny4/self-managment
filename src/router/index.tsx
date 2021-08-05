@@ -1,21 +1,16 @@
 import {createRouter,createWebHashHistory,createWebHistory} from 'vue-router'
+import Layout from '@/hooks/useLayout'
 import test from '@/router/test'
 
-const TopLayout=()=>import('@/components/layout/TopLayout.vue')
-const LeftLayout=()=>import('@/components/layout/LeftLayout.vue')
-const flg=import.meta.env.VITE_LAYOUT==='LeftLayout'
-const Layout=flg?LeftLayout:TopLayout
-
-const routes = [
+const routes:MenuItemType[] = [
   { 
     path: '/',
-    name:'主容器',
+    name:'主页',
     icon:'el-icon-menu',
+    hiddenInMenu:true,
     component: Layout,
-    children:[
-      test
-    ]
  },
+ test
 ]
 
 const router = createRouter({
@@ -24,11 +19,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from,next) => {
-  if(to.fullPath==='/')next({name:'测试'})
-  else next()
+  // if(to.fullPath==='/')next({name:'测试'})
+  // else next()
+  next()
 })
 router.afterEach((to, from) => {
   console.log(to)
 })
 
-export default router
+export {router,routes}
