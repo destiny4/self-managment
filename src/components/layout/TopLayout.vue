@@ -18,6 +18,7 @@
 
 <script lang='ts' setup>
 import useTitle from '@/hooks/useTitle'
+import {ElMain,ElContainer} from 'element-plus'
 import Header from '@/components/layout/header.vue'
 import Menu from '@/components/layout/sidemenu.vue'
 import {routes} from '@/router'

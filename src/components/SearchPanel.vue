@@ -27,6 +27,7 @@
 
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
+import {ElInput,ElButton} from 'element-plus'
 import type { PropType } from "vue"
 interface searchFiledType {
     name: string

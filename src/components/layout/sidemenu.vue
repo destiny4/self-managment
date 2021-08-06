@@ -13,6 +13,7 @@
 
 <script setup lang='ts'>
 import { computed, ref } from 'vue'
+import {ElMenu} from 'element-plus'
 import MenuItem from './MenuItem.vue'
 import type { PropType } from "vue"
 import { useRoute } from 'vue-router'

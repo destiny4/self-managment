@@ -14,7 +14,7 @@
 <script setup lang='ts'>
 import { computed, ref } from 'vue'
 import type { PropType } from "vue"
-
+import {ElSubmenu,ElMenuItem} from 'element-plus'
 const props = defineProps({
     menu: {
         type: Object as PropType<MenuItemType>,

@@ -12,7 +12,6 @@ import { ref, reactive } from 'vue'
 import type { PropType } from "vue"
 import SearchPanel from '@/components/SearchPanel.vue'
 import DataTable from '@/components/DataTableTsx.vue'
-import {ElButton} from 'element-plus'
 
 const columns: ListColumnsType[] = [{
     name: '日期',
