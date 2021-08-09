@@ -47,10 +47,10 @@ const columns: ListColumnsType[] = [{
     id: 'action',
     fixed: "right",
     width: 100,
-    scopedSlots: {
+    slots: {
         default: ({ row }: any) => {
             return (<>
-                <ElButton type="text" size="small">查看</ElButton>
+                <ElButton onClick={(e:any)=>console.log(row.name)} type="text" size="small">编辑</ElButton>
                 <ElButton type="text" size="small">编辑</ElButton>
             </>)
         }

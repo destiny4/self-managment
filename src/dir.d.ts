@@ -27,5 +27,8 @@ interface ListColumnsType{
     align?:'left'|'center'|'right'//默认是left
     fixed?:"left"|'right'//列固定在左边还是右边
     render?:function
-    scopedSlots?:object //列插槽
+    slots?:{
+        default?:function
+        header?:function
+    } //列插槽
 }

@@ -28,7 +28,7 @@
 
 <script setup lang='ts'>
 import { ref } from 'vue'
-import {ElImage,ElDropdown } from 'element-plus'
+import {ElImage,ElDropdown, ElDropdownMenu,ElDropdownItem} from 'element-plus'
 const fit = ref('fill')
 const url = ref('https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png')
 </script>

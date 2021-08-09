@@ -1,7 +1,7 @@
 <script lang='tsx'>
 import { defineComponent, ref, reactive } from 'vue'
 import type { PropType } from "vue"
-import {ElTableColumn,ElTable} from 'element-plus'
+import { ElTableColumn, ElTable, ElPagination } from 'element-plus'
 export default defineComponent({
   name: 'DataTableTsx',
   props: {
@@ -48,7 +48,7 @@ export default defineComponent({
                   label={item.name}
                   width={item.width || '-'}
                   align={item.align || 'left'}
-                  v-slots={item.scopedSlots || {}}
+                  v-slots={item.slots || {}}
                 >
                 </ElTableColumn>
 
@@ -56,6 +56,16 @@ export default defineComponent({
             })
           }
         </ElTable>
+        <ElPagination
+          class="pagination-region"
+          onSizeChange={handleSizeChange}
+          onCurrentChange={handleCurrentChange}
+          current-page={pg.currentPage}
+          page-sizes={[10, 20, 30, 50]}
+          page-size={pg.pageSize}
+          layout="total, sizes, prev, pager, next, jumper"
+          total={100}
+        ></ElPagination>
       </>
     )
   }
