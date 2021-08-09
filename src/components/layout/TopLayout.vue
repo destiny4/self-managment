@@ -6,7 +6,7 @@
       <Menu :menu="routes" :collapse="false" />
       <el-container class="main-layout">
         <div class="nav-info">
-          {{ name }}
+          <span class="title">{{ name }}</span>
         </div>
         <el-main>
           <router-view></router-view>
@@ -18,10 +18,10 @@
 
 <script lang='ts' setup>
 import useTitle from '@/hooks/useTitle'
-import {ElMain,ElContainer} from 'element-plus'
+import { ElMain, ElContainer } from 'element-plus'
 import Header from '@/components/layout/header.vue'
 import Menu from '@/components/layout/sidemenu.vue'
-import {routes} from '@/router'
+import { routes } from '@/router'
 const name = useTitle()
 </script>
 
@@ -59,10 +59,12 @@ $header-height: 56px;
   height: $header-height;
   margin: 0 24px;
   background: #ffffff;
-  font-family: PingFangSC-Medium;
-  font-size: 20px;
-  color: #000000;
-  letter-spacing: 0;
+  .title {
+    font-family: PingFangSC-Medium;
+    font-size: 20px;
+    color: #000000;
+    letter-spacing: 0;
+  }
 }
 </style>
   

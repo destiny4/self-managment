@@ -52,8 +52,6 @@ const pg = reactive<PaginationType>(props.pagination)
 const currentPage = ref(4)
 const pageSize = ref(10)
 
-const emit = defineEmits(['search'])
-
 const handleClick = (row) => {
     console.log(row);
 }
