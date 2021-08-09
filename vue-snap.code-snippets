@@ -1,0 +1,45 @@
+{
+	"Create a vue file": {
+		"scope": "vue",
+		"prefix": "vsc",
+		"body": [
+			"<template>\n",
+			"</template\n>",
+			"<script setup lang='ts'>",
+			"import {ref} from 'vue'\n",
+			"</script>\n",
+			"<style lang='scss'>\n",
+			"</style>"
+		],
+		"description": "Log output to console"
+	},
+	"Create a vue tsx file": {
+		"scope": "vue",
+		"prefix": "vtc",
+		"body": [
+			"<script lang='tsx'>",
+			"import { defineComponent, ref } from 'vue'",
+			"import type { PropType } from 'vue'\n",
+			"export default defineComponent({",
+			"  name: 'xxx',",
+			"  props: {",
+			"    obj: {",
+			"       type: Object as PropType<PaginationType>",
+			"    },",
+			"  },",
+			"  emits: ['xxx'],",
+			"  setup(props, { attrs, slots, emit }) {",
+			"    return () => (",
+			"      <>",
+			"        <div></div>",
+			"      </>",
+			"    )",
+			"  }",
+			"})",
+			"</script>\n",
+			"<style lang='scss'>\n",
+			"</style>"
+		],
+		"description": "Log output to console"
+	}
+}

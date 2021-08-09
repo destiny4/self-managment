@@ -1,5 +1,6 @@
 import Layout from '@/hooks/useLayout'
 const Test=()=>import('@/pages/test/List.vue')
+const TestEdit=()=>import('@/pages/test/Edit.vue')
 
 const test:MenuItemType= { 
   path: '/people',
@@ -17,8 +18,8 @@ const test:MenuItemType= {
     name:'测试2',
     path: '/people/edit',
     icon:'el-icon-menu',
-    hiddenInMenu:true,
-    component: Test
+    hiddenInMenu:false,
+    component: TestEdit
  }
   ]
 }

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import styleImport from 'vite-plugin-style-import'
+import { svgBuilder } from './src/plugins/svgBuilder'
 import path from 'path'
 export default defineConfig({
   resolve: {
@@ -12,6 +13,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
+    svgBuilder('./src/assets/svg/'),
     styleImport({
       libs: [
         {

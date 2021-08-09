@@ -1,10 +1,11 @@
-import { ref } from 'vue'
+import { computed } from 'vue'
 import {useRoute} from 'vue-router'
-
 const useTitle=()=>{
     const route=useRoute()
-    const name=ref(route.name)
-    return name
+    const name=computed(()=>{
+        return route.name
+    })
+    return name 
 }
 
 export default useTitle
