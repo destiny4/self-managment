@@ -4,14 +4,15 @@
 		"prefix": "vsc",
 		"body": [
 			"<template>\n",
-			"</template\n>",
+			"</template>\n",
 			"<script setup lang='ts'>",
-			"import {ref} from 'vue'\n",
+			"import {ref} from 'vue'",
+			"import type { PropType } from 'vue'\n",
 			"</script>\n",
-			"<style lang='scss'>\n",
+			"<style scoped lang='scss'>\n",
 			"</style>"
 		],
-		"description": "Log output to console"
+		"description": "Create a vue file"
 	},
 	"Create a vue tsx file": {
 		"scope": "vue",
@@ -37,9 +38,9 @@
 			"  }",
 			"})",
 			"</script>\n",
-			"<style lang='scss'>\n",
+			"<style scoped lang='scss'>\n",
 			"</style>"
 		],
-		"description": "Log output to console"
+		"description": "Create a vue tsx file"
 	}
 }

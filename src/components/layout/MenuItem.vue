@@ -11,6 +11,14 @@
         <MenuItem :menu="child" :key="child.name" v-for="child in menu.children" v-if="hasChildren"></MenuItem>
     </component>
 </template>
+<script lang='ts'>
+import {ElSubmenu,ElMenuItem} from 'element-plus'
+export default {
+    components: {
+        ElSubmenu,ElMenuItem
+    }
+}
+</script>
 <script setup lang='ts'>
 import { computed, ref } from 'vue'
 import type { PropType } from "vue"

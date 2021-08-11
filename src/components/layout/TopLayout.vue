@@ -9,9 +9,9 @@
           <SvgIcon @click="handBack" class="back" name="back"></SvgIcon>
           <span class="title">{{ name }}</span>
         </div>
-        <el-main>
+        <ElMain>
           <router-view></router-view>
-        </el-main>
+        </ElMain>
       </el-container>
     </el-container>
   </div>

@@ -1,10 +1,11 @@
 import { createApp } from 'vue'
-import App from './App.vue';
 import 'element-plus/packages/theme-chalk/src/base.scss'
-import {ElMenu,ElSubmenu,ElMenuItem, ElInput, ElButton} from 'element-plus'
+import '@/styles/main.scss'
+import App from './App.vue';
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
-const components = [ElMenu,ElSubmenu,ElMenuItem,SvgIcon]
+const components = [SvgIcon]
+
 import {router} from './router'
 
 const app = createApp(App)

@@ -15,6 +15,7 @@
 import { computed, ref } from 'vue'
 import MenuItem from './MenuItem.vue'
 import type { PropType } from "vue"
+import {ElMenu} from 'element-plus'
 import { useRoute } from 'vue-router'
 
 const route=useRoute()
