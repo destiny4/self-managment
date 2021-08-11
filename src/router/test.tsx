@@ -5,19 +5,19 @@ const TestEdit=()=>import('@/pages/test/Edit.vue')
 const test:MenuItemType= { 
   path: '/people',
   name:'人员',
-  icon:'el-icon-menu',
+  icon:'niupai',
   component: Layout,
   children:[
     {
       name:'列表',
       path: '/people/list',
-      icon:'el-icon-menu',
+      icon:'kele',
       component: Test
    },
    {
     name:'测试2',
     path: '/people/edit',
-    icon:'el-icon-menu',
+    icon:'sanmingzhi',
     hiddenInMenu:false,
     component: TestEdit
  }

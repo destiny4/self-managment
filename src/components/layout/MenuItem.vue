@@ -1,21 +1,23 @@
 
 <template>
-    <component v-if='!menu.hiddenInMenu' :is="itemComponent" :index="menu.path" :key="menu.path">
-        <i :class="menu.icon" v-if="menu.icon && !hasChildren"></i>
+    <component v-if="!menu.hiddenInMenu" :is="itemComponent" :index="menu.path" :key="menu.path">
+        <svg-icon width='20' height='20' class='svg-icon' :name="menu.icon" v-if="menu.icon && !hasChildren"></svg-icon>
         <template #title v-if="!hasChildren">{{ menu.name }}</template>
         <template #title v-if="hasChildren">
-            <i :class="menu.icon" v-if="menu.icon"></i>
-            <span>{{ menu.name }}</span>
+            <div>
+                <svg-icon  width='20' height='20' class='svg-icon' :name="menu.icon" v-if="menu.icon"></svg-icon>
+                <span>{{ menu.name }}</span>
+            </div>
         </template>
         <!-- 有子节点递归生成菜单项 -->
-        <MenuItem :menu="child" :key="child.name" v-for="child in menu.children" v-if="hasChildren"></MenuItem>
+        <menu-item :menu="child" :key="child.name" v-for="child in menu.children" v-if="hasChildren"></menu-item>
     </component>
 </template>
 <script lang='ts'>
-import {ElSubmenu,ElMenuItem} from 'element-plus'
+import { ElSubmenu, ElMenuItem } from 'element-plus'
 export default {
     components: {
-        ElSubmenu,ElMenuItem
+        ElSubmenu, ElMenuItem
     }
 }
 </script>
@@ -40,5 +42,8 @@ const itemComponent = computed(() => {
 .el-menu-item {
     display: flex;
     align-items: center;
+}
+.svg-icon{
+    margin-right:8px;
 }
 </style>

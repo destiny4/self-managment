@@ -13,6 +13,7 @@ import type { PropType } from "vue"
 import SearchPanel from '@/components/SearchPanel.vue'
 import DataTable from '@/components/ListTableTsx.vue'
 import {ElButton} from 'element-plus'
+import { router } from '../../router'
 
 const columns: ListColumnsType[] = [{
     name: '日期',
@@ -50,7 +51,7 @@ const columns: ListColumnsType[] = [{
     slots: {
         default: ({ row }: any) => {
             return (<>
-                <ElButton onClick={(e:any)=>console.log(row.name)} type="text" size="small">编辑</ElButton>
+                <ElButton onClick={(e:any)=>router.push('/people/edit')} type="text" size="small">编辑</ElButton>
                 <ElButton type="text" size="small">编辑</ElButton>
             </>)
         }

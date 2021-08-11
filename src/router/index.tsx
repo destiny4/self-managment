@@ -6,7 +6,7 @@ const routes:MenuItemType[] = [
   { 
     path: '/',
     name:'主页',
-    icon:'el-icon-menu',
+    icon:'niupai',
     hiddenInMenu:true,
     component: Layout,
  },

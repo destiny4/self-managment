@@ -218,6 +218,6 @@ const resetForm = () => {
 }
 .single-main {
     width: 476px;
-    padding:0 100px 10px 0;
+    padding-right: 100px;
 }
 </style>
