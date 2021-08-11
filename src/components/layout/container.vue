@@ -14,7 +14,6 @@ import type { PropType } from 'vue'
 .container {
     background: #ffffff;
     border-radius: 4px;
-    padding:30px;
     display: flex;
     justify-content: center;
 }

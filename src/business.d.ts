@@ -32,3 +32,32 @@ interface ListColumnsType{
         header?:function
     } //列插槽
 }
+
+interface DateTimeShortcut{
+    text:string
+    value:Date|()=>Date
+}
+
+interface SelectOption{
+    label:string
+    value:string
+}
+interface FormItemInner{
+    placeholder?:string
+    type?:'date'|'datetime'|'textarea'
+    shortcuts?:DateTimeShortcut[]
+    style?:string
+    options?:SelectOption[]
+}
+
+interface EditFormItem{
+    xtype:'ElInput'|'ElTimePicker'|'ElButton'|'ElSelect'|'ElDatePicker'
+    outer:{
+        prop:string
+        label:string
+        required?:boolean
+        size?:'small'|'mini'|'medium'
+    }
+    inner?:FormItemInner
+    events?:Record<string,function>
+}
