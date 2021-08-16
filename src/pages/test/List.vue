@@ -45,7 +45,7 @@ const columns: ListColumnsType[] = [{
     slots: {
         default: ({ row }: any) => {
             return (<>
-                <ElButton onClick={(e: any) => router.push(`/people/edit/${row._id||0}`)} type="text" size="small">编辑</ElButton>
+                <ElButton onClick={(e: any) => router.push(`/man/edit/${row._id||0}`)} type="text" size="small">编辑</ElButton>
                 <ElButton onClick={((e: any) => handleDelete())} type="text" size="small">删除</ElButton>
             </>)
         }

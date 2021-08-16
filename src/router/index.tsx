@@ -2,6 +2,7 @@ import {createRouter,createWebHashHistory,createWebHistory} from 'vue-router'
 import Layout from '@/hooks/useLayout'
 import test from '@/router/test'
 import cars from '@/router/cars'
+import people from '@/router/people'
 
 const routes:MenuItemType[] = [
   { 
@@ -12,7 +13,8 @@ const routes:MenuItemType[] = [
     component: Layout,
  },
  test,
- cars
+ cars,
+ people
 ]
 
 const router = createRouter({
