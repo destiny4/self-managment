@@ -15,7 +15,7 @@
         </div>
         <div class="search-button">
             <div class="left">
-                <el-button size="small" class="marginRight" type="primary" @click="handleEdit()">新建</el-button>
+                <el-button size="small" :style='newButtonStyle' class="marginRight" type="primary" @click="handCreate">新建</el-button>
             </div>
             <div class="right">
                 <el-button size="small" class="marginLeft" @click="handleClear">清空</el-button>
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, reactive } from 'vue'
+import { ref, reactive,computed } from 'vue'
 import {ElInput,ElButton} from 'element-plus'
 import type { PropType } from "vue"
 interface searchFiledType {
@@ -41,7 +41,16 @@ const props = defineProps({
     data: {
         type: Array as PropType<searchFiledType[]>,
         default: []
+    },
+    handCreate:{
+        type:Function as PropType<(e?:MouseEvent)=>void>,
+        default:null
     }
+})
+const newButtonStyle=computed(()=>{
+    return props.handCreate===null?{
+        display:'none'
+    }:{}
 })
 const searchFileds = ref<searchFiledType[]>(props.data)
 const tmp: any = {}
@@ -60,9 +69,11 @@ const getPlaceHolder = (item: searchFiledType) => {
 
 const emit = defineEmits(['search'])
 
-const handleEdit = () => { }
-
-const handleClear = () => { }
+const handleClear = () => {
+    Object.keys(searchInfo).forEach(key => {
+        searchInfo[key]=''
+    })
+ }
 
 const handleSearch = () => {
     const obj: any = {}

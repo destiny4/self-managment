@@ -8,13 +8,11 @@
         </div>
         <div class="right">
             <slot name="right">
-                <svg-icon width='25' height='25' name="people"></svg-icon>
-                <!-- <el-image style="width: 32px; height: 32px" :src="url" :fit="fit"></el-image> -->
+                <svg-icon width='25' height='25' :name="store.state.login?.avator||'people'"></svg-icon>
                 <el-dropdown trigger='click'>
                     <span class="el-dropdown-link">
-                        admin
+                        {{store.state.login.name}}{{store.state.test}}
                         <svg-icon width='16' height='16' name="downarrow"></svg-icon>
-                        <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
@@ -31,8 +29,9 @@
 <script setup lang='ts'>
 import { ref } from 'vue'
 import {ElImage,ElDropdown, ElDropdownMenu,ElDropdownItem} from 'element-plus'
-import SvgIcon from '../SvgIcon/index.vue';
-const fit = ref('fill')
+import {useStore} from 'vuex'
+const store=useStore()
+
 const url = ref('https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png')
 </script>
 

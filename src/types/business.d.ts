@@ -1,5 +1,7 @@
 declare module '@/hooks/*'
 declare module '@/router/*'
+declare module '@/apis/*'
+declare module '@/plugins/*'
 declare module ' @/components/*'
 declare module '@/*'
 
@@ -14,6 +16,7 @@ interface MenuItemType {
 interface PaginationType{
     currentPage:number
     pageSize:number
+    total:number
 }
 
 interface ListColumnsType{
@@ -56,8 +59,20 @@ interface EditFormItem{
         prop:string
         label:string
         required?:boolean
+        style?:string
         size?:'small'|'mini'|'medium'
     }
     inner?:FormItemInner
     events?:Record<string,function>
+}
+
+type ApiFunction=(data:Record<string,any>)=>Promise
+
+interface ApiMethods{
+    getByPage?:ApiFunction
+    getById?:ApiFunction
+    insert?:ApiFunction
+    updateById?:ApiFunction
+    deleteById?:ApiFunction
+    [prop:string]:ApiFunction
 }

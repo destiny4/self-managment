@@ -1,5 +1,5 @@
 <script lang='tsx'>
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref, reactive,computed} from 'vue'
 import type { PropType } from "vue"
 import { ElTableColumn, ElTable, ElPagination } from 'element-plus'
 export default defineComponent({
@@ -16,31 +16,35 @@ export default defineComponent({
       type: Array as PropType<ListColumnsType>
     }
   },
-  emits: ['search'],
+  emits: ['pageChange'],
   setup(props, { attrs, slots, emit }) {
-    const tableData = reactive(props.data)
-    const tableColumns = reactive(props.columns)
-
-    const pg = reactive<PaginationType>(props.pagination)
-
-    const currentPage = ref(4)
-    const pageSize = ref(10)
+    const tableData = computed(()=>{
+      return props.data
+    })
+    const tableColumns = computed(()=>{
+      return props.columns
+    })
+    const pg = computed(()=>{
+      return props.pagination
+    })
 
     const handleClick = (row) => {
       console.log(row);
     }
 
     const handleSizeChange = (val) => {
-      pg.pageSize = val
+      pg.value.pageSize = val
+      emit('pageChange',pg.value)
     };
     const handleCurrentChange = (val) => {
-      pg.currentPage = val
+      pg.value.currentPage = val
+      emit('pageChange',pg.value)
     };
     return () => (
       <>
-        <ElTable class="table-margin" data={tableData} style={{ width: '100%' }}>
+        <ElTable class="table-margin" data={tableData.value} style={{ width: '100%' }}>
           {
-            tableColumns.map(item => {
+            tableColumns.value.map(item => {
               return (
                 <ElTableColumn
                   key={item.id}
@@ -60,11 +64,11 @@ export default defineComponent({
           class="pagination-region"
           onSizeChange={handleSizeChange}
           onCurrentChange={handleCurrentChange}
-          current-page={pg.currentPage}
+          current-page={pg.value.currentPage}
           page-sizes={[10, 20, 30, 50]}
-          page-size={pg.pageSize}
+          page-size={pg.value.pageSize}
           layout="total, sizes, prev, pager, next, jumper"
-          total={100}
+          total={pg.value.total}
         ></ElPagination>
       </>
     )

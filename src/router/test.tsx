@@ -9,14 +9,14 @@ const test:MenuItemType= {
   component: Layout,
   children:[
     {
-      name:'列表',
+      name:'人员列表',
       path: '/people/list',
       icon:'kele',
       component: Test
    },
    {
-    name:'测试2',
-    path: '/people/edit',
+    name:'人员编辑',
+    path: '/people/edit/:id',
     icon:'sanmingzhi',
     hiddenInMenu:false,
     component: TestEdit

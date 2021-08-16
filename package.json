@@ -8,9 +8,11 @@
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^1.1.7",
     "element-plus": "^1.0.2-beta.62",
+    "flyio": "^0.6.14",
     "vite-plugin-style-import": "^1.0.1",
     "vue": "^3.0.5",
-    "vue-router": "^4.0.10"
+    "vue-router": "^4.0.10",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.5",
