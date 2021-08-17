@@ -20,13 +20,13 @@ import SearchPanel from '@/components/SearchPanel.vue'
 import DataTable from '@/components/ListTableTsx.vue'
 import { ElButton, ElMessage, ElMessageBox } from 'element-plus'
 import { useStore } from 'vuex'
-import Api from '@/apis/people'
+import Api from '@/apis/employee'
 
 const router = useRouter()
 const store = useStore()
 
 const handCreate = () => {
-    router.push('/people/edit/0')
+    router.push('/employee/edit/0')
 }
 
 const handleDelete = (row: any) => {
@@ -75,7 +75,7 @@ const columns: ListColumnsType[] = [
     slots: {
         default: ({ row }: any) => {
             return (<>
-                <ElButton onClick={(e: any) => router.push(`/people/edit/${row._id || 0}`)} type="text" size="small">编辑</ElButton>
+                <ElButton onClick={(e: any) => router.push(`/employee/edit/${row._id || 0}`)} type="text" size="small">编辑</ElButton>
                 <ElButton onClick={((e: any) => handleDelete(row))} type="text" size="small">删除</ElButton>
             </>)
         }

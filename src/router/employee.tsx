@@ -1,26 +1,26 @@
 import Layout from '@/hooks/useLayout'
-const List = () => import('@/pages/people/List.vue')
-const Edit = () => import('@/pages/people/Edit.vue')
+const List = () => import('@/pages/employee/List.vue')
+const Edit = () => import('@/pages/employee/Edit.vue')
 
-const people: MenuItemType = {
-  path: '/people',
+const employee: MenuItemType = {
+  path: '/employee',
   name: '职工',
   icon: 'niupai',
   component: Layout,
   children: [
     {
       name: '职工列表',
-      path: '/people/list',
+      path: '/employee/list',
       icon: 'kele',
       component: List
     },
     {
       name: '职工编辑',
-      path: '/people/edit/:id',
+      path: '/employee/edit/:id',
       icon: 'sanmingzhi',
       hiddenInMenu: true,
       component: Edit
     }
   ]
 }
-export default people
+export default employee

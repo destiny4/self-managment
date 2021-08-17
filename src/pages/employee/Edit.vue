@@ -49,7 +49,7 @@ import { useRoute, useRouter } from 'vue-router'
 import Container from '@/components/layout/container.vue'
 import { ElMessage } from 'element-plus'
 import type { FormRulesMap } from 'element-plus/lib/el-form/src/form.type'
-import Api from '@/apis/people'
+import Api from '@/apis/employee'
 
 const router = useRouter()
 const shortcuts: DateTimeShortcut[] = [{
