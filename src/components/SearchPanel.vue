@@ -29,17 +29,10 @@
 import { ref, reactive,computed } from 'vue'
 import {ElInput,ElButton} from 'element-plus'
 import type { PropType } from "vue"
-interface searchFiledType {
-    name: string
-    id: string
-    inSearch?:boolean
-    labelWidth?: string
-    placeHolder?: string
-    [propName: string]: any;
-}
+
 const props = defineProps({
     data: {
-        type: Array as PropType<searchFiledType[]>,
+        type: Array as PropType<ListColumnsType[]>,
         default: []
     },
     handCreate:{
@@ -52,18 +45,18 @@ const newButtonStyle=computed(()=>{
         display:'none'
     }:{}
 })
-const searchFileds = ref<searchFiledType[]>(props.data)
+const searchFileds = ref<ListColumnsType[]>(props.data)
 const tmp: any = {}
 searchFileds.value.forEach(item => {
     tmp[item.id] = ''
 })
 const searchInfo = reactive(tmp)
 
-const getStyle = (item: searchFiledType) => {
+const getStyle = (item: ListColumnsType) => {
     return `width:${item.labelWidth || 100}px`
 }
 
-const getPlaceHolder = (item: searchFiledType) => {
+const getPlaceHolder = (item: ListColumnsType) => {
     return item.placeHolder ? item.placeHolder : `请输入${item.name}...`
 }
 

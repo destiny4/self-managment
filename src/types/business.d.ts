@@ -1,9 +1,3 @@
-declare module '@/hooks/*'
-declare module '@/router/*'
-declare module '@/apis/*'
-declare module '@/plugins/*'
-declare module ' @/components/*'
-declare module '@/*'
 
 interface MenuItemType {
     path: string,
@@ -34,6 +28,7 @@ interface ListColumnsType{
         default?:function
         header?:function
     } //列插槽
+    [propName: string]: any
 }
 
 interface DateTimeShortcut{
@@ -69,10 +64,10 @@ interface EditFormItem{
 type ApiFunction=(data:Record<string,any>)=>Promise
 
 interface ApiMethods{
-    getByPage?:ApiFunction
-    getById?:ApiFunction
-    insert?:ApiFunction
-    updateById?:ApiFunction
-    deleteById?:ApiFunction
+    getByPage:ApiFunction
+    getById:ApiFunction
+    insert:ApiFunction
+    updateById:ApiFunction
+    deleteById:ApiFunction
     [prop:string]:ApiFunction
 }
