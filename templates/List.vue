@@ -1,9 +1,9 @@
 <template>
     <div class="main-container">
-        <SearchPanel :handCreate="handCreate" :data="columns" @search="getList" />
+        <SearchPanel :handCreate="handCreate" :data="columns" @search="search" />
         <div class="table-region">
             <DataTable
-                @pageChange="pageChang"
+                @pageChange="pageChange"
                 :columns="columns"
                 :data="tableData"
                 :pagination="pagination"
@@ -55,7 +55,7 @@ const handleDelete = (row: any) => {
         });
 }
 const columns: ListColumnsType[] = [
-<% data.table.forEach(function(item){ %>
+<% data.table.forEach(function(item){ -%>
 {
     name: '<%= item.name %>',
     id: '<%= item.id %>',
@@ -82,25 +82,28 @@ const pagination = ref<PaginationType>({
     pageSize: 10,
     total: 10
 })
-const getList = (searchInfo: {}) => {
+const searchObj=ref({})
+const getList = () => {
     Api.getByPage({
         pageSize: pagination.value.pageSize,
         currentPage: pagination.value.currentPage,
-        query: { ...searchInfo }
+        query: { ...searchObj.value }
     }).then((res: any) => {
         tableData.value = res.data.list
         pagination.value = res.data.pagination
 
     })
 }
-const handleClick = (row: any) => {
-    console.log(row)
+const search=(searchInfo: {}) => {
+    searchObj.value=searchInfo
+    getList()
 }
-const pageChang = (pg: PaginationType) => {
-    console.log(pg)
+const pageChange = (pg: PaginationType) => {
+    pagination.value=pg
+    getList()
 }
 onMounted(() => {
-    getList({})
+    getList()
 })
 
 </script>

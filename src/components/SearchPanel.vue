@@ -66,6 +66,7 @@ const handleClear = () => {
     Object.keys(searchInfo).forEach(key => {
         searchInfo[key]=''
     })
+    emit('search', {})
  }
 
 const handleSearch = () => {

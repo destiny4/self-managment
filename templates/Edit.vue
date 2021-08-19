@@ -88,7 +88,7 @@ const formItems: EditFormItem[] = [
             prop: '_id'
         }
     },
-    <% data.table.forEach(function(item){ %>
+    <% data.table.forEach(function(item){ -%>
     {
         xtype: 'ElInput',
         outer: {
