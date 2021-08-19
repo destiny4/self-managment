@@ -39,7 +39,7 @@ const handleDelete = (row: any) => {
             Api.deleteById({ _id: row._id }).then((res: any) => {
                 if (res.code === 0) {
                     ElMessage.success('删除成功');
-                    getList({})
+                    getList()
                 } else {
                     ElMessage.error(res.msg);
                 }
