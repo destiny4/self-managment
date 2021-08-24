@@ -41,25 +41,25 @@ const props = defineProps({
         type: Object as PropType<PaginationType>
     },
     columns: {
-        type: Array as PropType<ListColumnsType>
+        type: Array as PropType<unknown> as PropType<ListColumnsType>
     }
 })
 const tableData = ref(props.data)
 const tableColumns = ref(props.columns)
 
-const pg = reactive<PaginationType>(props.pagination)
+const pg = reactive<PaginationType>(props.pagination!)
 
 const currentPage = ref(4)
 const pageSize = ref(10)
 
-const handleClick = (row) => {
+const handleClick = (row: any) => {
     console.log(row);
 }
 
-const handleSizeChange = (val) => {
+const handleSizeChange = (val: number) => {
     pg.pageSize = val
 };
-const handleCurrentChange = (val) => {
+const handleCurrentChange = (val: number) => {
     pg.currentPage = val
 };
 </script>

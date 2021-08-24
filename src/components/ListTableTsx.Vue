@@ -1,5 +1,5 @@
 <script lang='tsx'>
-import { defineComponent, ref, reactive,computed} from 'vue'
+import { defineComponent,computed} from 'vue'
 import type { PropType } from "vue"
 import { ElTableColumn, ElTable, ElPagination } from 'element-plus'
 export default defineComponent({
@@ -13,7 +13,7 @@ export default defineComponent({
       type: Object as PropType<PaginationType>
     },
     columns: {
-      type: Array as PropType<ListColumnsType>
+      type: Array as PropType<unknown> as PropType<ListColumnsType>
     }
   },
   emits: ['pageChange'],
@@ -28,23 +28,27 @@ export default defineComponent({
       return props.pagination
     })
 
-    const handleClick = (row) => {
+    const handleClick = (row: any) => {
       console.log(row);
     }
 
-    const handleSizeChange = (val) => {
-      pg.value.pageSize = val
-      emit('pageChange',pg.value)
+    const handleSizeChange = (val: number) => {
+      if(pg.value){
+        pg.value.pageSize = val
+        emit('pageChange',pg.value)
+      }
     };
-    const handleCurrentChange = (val) => {
-      pg.value.currentPage = val
+    const handleCurrentChange = (val: number) => {
+      if( pg.value){
+        pg.value.currentPage = val
       emit('pageChange',pg.value)
+      }
     };
     return () => (
       <>
         <ElTable class="table-margin" data={tableData.value} style={{ width: '100%' }}>
           {
-            tableColumns.value.map(item => {
+            tableColumns.value!.map((item: { id: string | number | undefined; name: any; width: any; align: any; slots: any }) => {
               return (
                 <ElTableColumn
                   key={item.id}
@@ -64,11 +68,11 @@ export default defineComponent({
           class="pagination-region"
           onSizeChange={handleSizeChange}
           onCurrentChange={handleCurrentChange}
-          current-page={pg.value.currentPage}
+          current-page={pg.value?.currentPage}
           page-sizes={[10, 20, 30, 50]}
-          page-size={pg.value.pageSize}
+          page-size={pg.value?.pageSize}
           layout="total, sizes, prev, pager, next, jumper"
-          total={pg.value.total}
+          total={pg.value?.total}
         ></ElPagination>
       </>
     )

@@ -1,4 +1,10 @@
-
+// declare module '@toast-ui/editor/dist/toastui-editor-viewer'
+declare module 'prismjs'
+declare module "@toast-ui/editor/dist/toastui-editor-viewer" {
+    import { Viewer } from "@toast-ui/editor/types/editor";
+  
+    export default Viewer;
+}
 interface MenuItemType {
     path: string,
     name: string,
