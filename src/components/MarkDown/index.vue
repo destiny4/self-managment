@@ -28,7 +28,7 @@ import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 
 // import '@toast-ui/editor/dist/theme/toastui-editor-dark.css';
 
-let editor: EditorType|Viewer
+let editor: EditorType | Viewer
 const props = defineProps({
     content: {
         type: String,
@@ -54,7 +54,7 @@ const chartOptions = {
     minHeight: 100,
     maxHeight: 300
 };
-const plugins: Array<any> = [[codeSyntaxHighlight, { highlighter: Prism }],colorSyntax]
+const plugins: Array<any> = [[codeSyntaxHighlight, { highlighter: Prism }], colorSyntax]
 // 添加图表插件   
 // plugins.push([chart, chartOptions])
 onMounted(() => {
@@ -80,5 +80,8 @@ const getHtml = () => {
 
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss'>
+.toastui-editor-contents .toastui-editor-md-preview-highlight::after {
+    background-color:white;
+}
 </style>
