@@ -1,9 +1,9 @@
 <template>
     <header class="total-header">
         <div class="left">
-            <svg-icon name='management'></svg-icon>
+            <svg-icon width='40' height='40' name='management'></svg-icon>
             <slot name="left">
-                <span>后台管理系统</span>
+                <span>{{title}}</span>
             </slot>
         </div>
         <div class="right">
@@ -31,7 +31,7 @@ import { ref } from 'vue'
 import {ElImage,ElDropdown, ElDropdownMenu,ElDropdownItem} from 'element-plus'
 import {useStore} from 'vuex'
 const store=useStore()
-
+const title=import.meta.env.VITE_TITLE||'后台管理系统'
 const url = ref('https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png')
 </script>
 
