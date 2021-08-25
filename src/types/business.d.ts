@@ -77,3 +77,10 @@ interface ApiMethods{
     deleteById:ApiFunction
     [prop:string]:ApiFunction
 }
+
+interface CosConfig{
+    secretId:string
+    secretKey:string
+    bucket:string
+    region:string
+}
