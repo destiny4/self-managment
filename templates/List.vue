@@ -91,7 +91,6 @@ const getList = () => {
     }).then((res: any) => {
         tableData.value = res.data.list
         pagination.value = res.data.pagination
-
     })
 }
 const search=(searchInfo: {}) => {

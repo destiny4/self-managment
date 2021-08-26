@@ -72,11 +72,10 @@ const shortcuts: DateTimeShortcut[] = [{
 }]
 const FormInstance = ref<any>(null)
 const formFileds = ref<Record<string, string>>({
-    title: '',
-    brand: '',
-    price: '',
-    age: '',
-    _id: ''
+<% data.table.forEach(function(item){ -%>
+    <%= item.id %>:'',
+<% }); -%>
+     _id: ''
 })
 const formItems: EditFormItem[] = [
     {
@@ -97,14 +96,14 @@ const formItems: EditFormItem[] = [
             prop: '<%= item.id%>'
         }
     },
-    <% }); %>
+    <% }); -%>
 ]
 const rules: FormRulesMap = {
-    <% data.table.forEach(function(item){ %>
+    <% data.table.forEach(function(item){ -%>
     <%= item.id%>: [
         { required: true, trigger: 'change' }
     ],
-    <% }); %>
+    <% }); -%>
 }
 let addFlg = true
 

@@ -55,14 +55,12 @@ const handleDelete = (row: any) => {
         });
 }
 const columns: ListColumnsType[] = [
-
 {
     name: '姓名',
     id: 'name',
     inSearch: true
 }, 
-    
-{
+    {
     name: '年龄',
     id: 'age',
     inSearch: true

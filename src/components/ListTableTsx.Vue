@@ -16,7 +16,7 @@ export default defineComponent({
       type: Array as PropType<unknown> as PropType<ListColumnsType>
     }
   },
-  emits: ['pageChange'],
+  emits: ['pageChange','dbclick'],
   setup(props, { attrs, slots, emit }) {
     const tableData = computed(()=>{
       return props.data
@@ -46,7 +46,7 @@ export default defineComponent({
     };
     return () => (
       <>
-        <ElTable class="table-margin" data={tableData.value} style={{ width: '100%' }}>
+        <ElTable onRowDblclick={(row: any)=>emit('dbclick',row)} class="table-margin" data={tableData.value} style={{ width: '100%' }}>
           {
             tableColumns.value!.map((item: { id: string | number | undefined; name: any; width: any; align: any; slots: any }) => {
               return (

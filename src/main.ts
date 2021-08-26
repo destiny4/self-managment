@@ -4,7 +4,7 @@ import '@/styles/main.scss'
 import App from '@/App.vue'
 import store from '@/store'
 import { router } from '@/router'
-import SvgIcon from '@/components/SvgIcon/index.vue'
+import SvgIcon from '@/components/SvgIcon.vue'
 
 const components = [SvgIcon]
 

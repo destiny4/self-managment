@@ -84,3 +84,10 @@ interface CosConfig{
     bucket:string
     region:string
 }
+
+interface ModalTableValueConfig{
+    // 值字段，给v-modal的字段赋值
+    valueFiled:string
+    // 名称字段，显示在input上的名称
+    nameFiled:string
+}

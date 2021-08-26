@@ -13,7 +13,7 @@
 <script setup lang='ts'>
 import { ref, onMounted, watch } from 'vue'
 import type { PropType } from 'vue'
-import MarkDown from '@/components/MarkDown/index.vue'
+import MarkDown from '@/components/MarkDown.vue'
 
 const content = ``
 const mdRef=ref<any>(null)

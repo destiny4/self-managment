@@ -2,7 +2,7 @@
 module.exports = {
   templatePath: './templates',
   outputPath:'./out',
-  moduleId:'employee',
+  moduleId:'demo',
   moduleName:'职工',
   table:[{
     id:'name',

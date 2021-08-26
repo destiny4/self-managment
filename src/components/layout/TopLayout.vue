@@ -24,7 +24,6 @@ import Header from '@/components/layout/header.vue'
 import Menu from '@/components/layout/sidemenu.vue'
 import { routes } from '@/router'
 import { useRouter } from 'vue-router'
-import SvgIcon from '../SvgIcon/index.vue'
 const name = useTitle()
 const router = useRouter()
 const handBack = () => {

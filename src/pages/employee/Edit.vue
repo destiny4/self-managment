@@ -25,7 +25,15 @@
                         </template>
                     </component>
                 </ElFormItem>
-
+                <ElFormItem size="small" label="弹窗" prop='name'>
+                    <ModalTable
+                        :columns="columns"
+                        :api="Api"
+                        v-model="formFileds._id"
+                        title="员工"
+                        :valueConfig="valueConfig"
+                    ></ModalTable>
+                </ElFormItem>
                 <ElFormItem size="small">
                     <el-button type="primary" @click="submitForm()">立即创建</el-button>
                     <el-button @click="back()">返回</el-button>
@@ -49,9 +57,28 @@ import { useRoute, useRouter } from 'vue-router'
 import Container from '@/components/layout/container.vue'
 import { ElMessage } from 'element-plus'
 import type { FormRulesMap } from 'element-plus/lib/el-form/src/form.type'
+import ModalTable from '@/components/ModalTable.vue'
 import Api from '@/apis/employee'
 
 const router = useRouter()
+
+const columns: ListColumnsType[] = [
+    {
+        name: '姓名',
+        id: 'name',
+        inSearch: true
+    },
+    {
+        name: '年龄',
+        id: 'age',
+        inSearch: true
+    }
+]
+const valueConfig: ModalTableValueConfig = {
+    valueFiled: '_id',
+    nameFiled: 'name'
+}
+
 const shortcuts: DateTimeShortcut[] = [{
     text: '今天',
     value: new Date(),
@@ -71,12 +98,11 @@ const shortcuts: DateTimeShortcut[] = [{
     },
 }]
 const FormInstance = ref<any>(null)
+const tableName=ref('')
 const formFileds = ref<Record<string, string>>({
-    title: '',
-    brand: '',
-    price: '',
-    age: '',
-    _id: ''
+    name:'',
+    age:'',
+    _id:''
 })
 const formItems: EditFormItem[] = [
     {
@@ -88,16 +114,7 @@ const formItems: EditFormItem[] = [
             prop: '_id'
         }
     },
-    
-    {
-        xtype: 'ElInput',
-        outer: {
-            size: 'small',
-            label: '姓名',
-            prop: 'name'
-        }
-    },
-    
+
     {
         xtype: 'ElInput',
         outer: {
@@ -106,18 +123,18 @@ const formItems: EditFormItem[] = [
             prop: 'age'
         }
     },
-    
+
 ]
 const rules: FormRulesMap = {
-    
+
     name: [
         { required: true, trigger: 'change' }
     ],
-    
+
     age: [
         { required: true, trigger: 'change' }
     ],
-    
+
 }
 let addFlg = true
 
@@ -128,6 +145,7 @@ onMounted(() => {
         Api.getById({ _id: route.params.id })
             .then((res: any) => {
                 formFileds.value = res.data
+                tableName.value=res.data.name
             })
     }
 })
@@ -138,20 +156,20 @@ const submitForm = () => {
                 Api.insert(formFileds.value).then((res: any) => {
                     if (res.code === 0) {
                         ElMessage.success('新增成功');
-                    }else{
+                    } else {
                         ElMessage.error(res.msg);
                     }
-                }).catch((err: any)=>{
+                }).catch((err: any) => {
                     ElMessage.error(err);
                 })
             } else {
                 Api.updateById(formFileds.value).then((res: any) => {
                     if (res.code === 0) {
                         ElMessage.success('修改成功');
-                    }else{
+                    } else {
                         ElMessage.error(res.msg);
                     }
-                }).catch((err: any)=>{
+                }).catch((err: any) => {
                     ElMessage.error(err);
                 })
             }
