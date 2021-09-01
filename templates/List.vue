@@ -59,9 +59,18 @@ const columns: ListColumnsType[] = [
 {
     name: '<%= item.name %>',
     id: '<%= item.id %>',
+    <% if(item.type==='date'){ -%>
+    searchConfig:{
+        xtype:'ElDatePicker',
+        type:'daterange',
+        'range-separator':'至',
+        'start-placeholder':'开始日期',
+        'end-placeholder':'结束日期'
+    },
+    <% } -%> 
     inSearch: true
 }, 
-    <% }); %>
+    <% }); -%>
  {
     name: '操作',
     id: 'action',
@@ -91,9 +100,20 @@ const getList = () => {
     }).then((res: any) => {
         tableData.value = res.data.list
         pagination.value = res.data.pagination
+
     })
 }
-const search=(searchInfo: {}) => {
+const search=(searchInfo: any) => {
+    <% data.table.forEach(function(item){ -%>
+        <% if(item.type==='date'){ -%>
+            if(searchInfo.<%= item.id %>){
+                searchInfo.<%= item.id %>={
+                    '$gte':searchInfo.<%= item.id %>[0].getTime(),
+                    '$lte':searchInfo.<%= item.id %>[1].getTime()
+                }
+            }
+        <% } -%>
+    <% }); -%>
     searchObj.value=searchInfo
     getList()
 }
