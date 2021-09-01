@@ -41,7 +41,7 @@ const props = defineProps({
         type: Object as PropType<PaginationType>
     },
     columns: {
-        type: Array as PropType<unknown> as PropType<ListColumnsType>
+        type: Array as PropType<unknown> as PropType<ListColumnsType[]>
     }
 })
 const tableData = ref(props.data)

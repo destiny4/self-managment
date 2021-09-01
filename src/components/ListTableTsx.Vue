@@ -13,7 +13,7 @@ export default defineComponent({
       type: Object as PropType<PaginationType>
     },
     columns: {
-      type: Array as PropType<unknown> as PropType<ListColumnsType>
+      type: Array as PropType<unknown> as PropType<ListColumnsType[]>
     }
   },
   emits: ['pageChange','dbclick'],
@@ -48,7 +48,7 @@ export default defineComponent({
       <>
         <ElTable onRowDblclick={(row: any)=>emit('dbclick',row)} class="table-margin" data={tableData.value} style={{ width: '100%' }}>
           {
-            tableColumns.value!.map((item: { id: string | number | undefined; name: any; width: any; align: any; slots: any }) => {
+            tableColumns.value!.map((item) => {
               return (
                 <ElTableColumn
                   key={item.id}
